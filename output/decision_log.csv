@@ -1,0 +1,10 @@
+table,issue,decision,reason
+patients,exact duplicate rows,"Remove exact duplicate rows, keeping the first.","Repeated rows will skew downstream analysis, first entry of patient record likely to be most reliable on patient characteristics"
+patients,gender spellings that are not a code,"Encoded gender into specific values: ""F"", ""M"" or ""X""",Easier for future summarization of gender composition of patient cohort
+patients,site codes needing normalization,Made encodings for site consistent,Easier for future summarization of study sites
+patients,birth_year sentinel 9999,"Converted birth year encoded as ""9999"" as missing",As inclusion of impossible birth years will skew downstream analyses
+visits,weight column named wt_kg in visits_south.csv,"Renamed ""wt_kg"" as ""weight_kg""",Will help merging visit tables collected north vs south locations
+visits,sbp sentinel 999 and readings outside 70 through 250,"Converted sbp outliers including ""999"" as missing and made sbp numerical",as inclusion of impossible SBP values will skew downstream analyses
+visits,impossible and loosely written visit dates,"Kept visit date values with a specific format of ""YYYY-MM-DD"", encoded impossible dates as missing",As inclusion of visit dates will skew downstream analyses
+visits,repeated patient_id and visit pairs,"Removed duplicates, kept the most recent visit record for each patient",Most recent visit record more reflective of current patient status
+site,repeated site_code rows,Cleaned site code values by removing hyphens and spaces,Will help summarization of study sites
